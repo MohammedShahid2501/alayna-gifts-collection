@@ -1,0 +1,173 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff;
+  color: #333;
+  padding-bottom: 40px;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f8f8;
+  padding: 15px 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+nav h2 a {
+  font-size: 24px;
+  color: #111;
+}
+
+nav div {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+#logoutBtn {
+  padding: 6px 12px;
+  background-color: crimson;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Forms */
+form {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+form input, form select, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Products Page */
+.products-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 20px;
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.product-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+.product-card h3 {
+  margin: 10px 0 5px;
+}
+
+.product-card button {
+  background-color: #28a745;
+  padding: 8px 12px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* Cart */
+#cartItems > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+#cartItems button {
+  background: red;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Admin Panel */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.delete-btn {
+  background-color: red;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Responsive Navbar */
+@media screen and (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+  }
+}

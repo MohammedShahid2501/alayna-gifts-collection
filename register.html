@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - Alayana Gift Collection</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/script.js" defer></script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const registerForm = document.getElementById("registerForm");
+
+      registerForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const username = document.getElementById("username").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (password !== confirmPassword) {
+          alert("Passwords do not match!");
+          return;
+        }
+
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+        const userExists = users.some(user => user.email === email);
+        if (userExists) {
+          alert("User with this email already exists!");
+          return;
+        }
+
+        users.push({ username, email, password });
+        localStorage.setItem("users", JSON.stringify(users));
+
+        alert("Registration successful!");
+        window.location.href = "login.html";
+      });
+    });
+  </script>
+  <style>
+    form {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #222;
+      color: white;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+  <!-- ✅ Navbar -->
+  <header>
+    <nav style="display: flex; justify-content: space-between; align-items: center; background-color: #f1f1f1; padding: 10px 20px;">
+      <h2><a href="index.html" style="text-decoration: none; color: black;">Alayana Gift Collection</a></h2>
+      <div style="display: flex; gap: 20px; align-items: center;">
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+        <span id="userGreeting"></span>
+        <button id="logoutBtn" style="display:none;" onclick="logoutUser()">Logout</button>
+        <a id="loginLink" href="login.html">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ✅ Registration Form -->
+  <main>
+    <form id="registerForm">
+      <h2 style="text-align: center;">User Registration</h2>
+      <input type="text" id="username" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+      <button type="submit">Register</button>
+    </form>
+  </main>
+</body>
+</html>

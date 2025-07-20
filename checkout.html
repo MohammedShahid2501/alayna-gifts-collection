@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkout - Alayana Gift Collection</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <!-- ✅ Navbar -->
+  <header>
+    <nav style="display: flex; justify-content: space-between; align-items: center; background-color: #f1f1f1; padding: 10px 20px;">
+      <h2><a href="index.html" style="text-decoration: none; color: black;">Alayana Gift Collection</a></h2>
+      <div style="display: flex; gap: 20px; align-items: center;">
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+        <span id="userGreeting"></span>
+        <button id="logoutBtn" style="display:none;" onclick="logoutUser()">Logout</button>
+        <a id="loginLink" href="login.html">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ✅ Checkout Form -->
+  <main style="padding: 20px;">
+    <h2>Checkout</h2>
+    <form id="checkoutForm" onsubmit="submitOrder(event)" style="display: flex; flex-direction: column; gap: 15px; max-width: 400px;">
+      <label>
+        Full Name:
+        <input type="text" id="customerName" required />
+      </label>
+
+      <label>
+        Address:
+        <textarea id="customerAddress" rows="3" required></textarea>
+      </label>
+
+      <label>
+        Payment Method:
+        <select id="paymentMethod" required>
+          <option value="">-- Select Payment Method --</option>
+          <option value="credit">Credit Card</option>
+          <option value="debit">Debit Card</option>
+          <option value="cod">Cash on Delivery</option>
+        </select>
+      </label>
+
+      <button type="submit" style="padding: 10px 20px; background-color: darkblue; color: white; font-size: 16px; border: none; border-radius: 5px;">
+        Place Order
+      </button>
+    </form>
+
+    <!-- ✅ Search & Filter Section -->
+    <section style="margin-top: 50px;">
+      <h3>Search & Filter Gifts</h3>
+      <div style="margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
+        <input type="text" id="searchInput" placeholder="Search gifts..." style="padding: 8px; width: 200px;" onkeyup="filterProducts()" />
+        <select id="categoryFilter" onchange="filterProducts()" style="padding: 8px;">
+          <option value="">All Categories</option>
+          <option value="Birthday">Birthday</option>
+          <option value="Wedding">Wedding</option>
+          <option value="Anniversary">Anniversary</option>
+          <option value="Valentine">Valentine</option>
+        </select>
+      </div>
+      <div class="products-grid"></div>
+    </section>
+  </main>
+</body>
+</html>

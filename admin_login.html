@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Login - Alayana Gift Collection</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>🔐 Admin Login</h1>
+  </header>
+
+  <main style="max-width: 400px; margin: auto; padding: 30px;">
+    <form onsubmit="adminLogin(event)" style="display: flex; flex-direction: column; gap: 15px;">
+      <input type="text" id="adminUsername" placeholder="Enter Admin Username" required />
+      <input type="password" id="adminPassword" placeholder="Enter Password" required />
+      <button type="submit">Login</button>
+      <p id="adminLoginMsg" style="color: red;"></p>
+    </form>
+  </main>
+
+  <script>
+    function adminLogin(event) {
+      event.preventDefault();
+      const username = document.getElementById('adminUsername').value;
+      const password = document.getElementById('adminPassword').value;
+      const message = document.getElementById('adminLoginMsg');
+
+      // Hardcoded admin credentials (you can improve later with backend)
+      if (username === "admin" && password === "admin123") {
+        localStorage.setItem('isAdminLoggedIn', 'true');
+        window.location.href = 'admin_panel.html';
+      } else {
+        message.textContent = "Invalid credentials. Please try again.";
+      }
+    }
+  </script>
+</body>
+</html>

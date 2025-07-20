@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alayana Gift Collection - Products</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/script.js" defer></script>
+  <style>
+    .product-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .product {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .filter-container, .search-container {
+      text-align: center;
+      margin: 20px;
+    }
+    .filter-container button {
+      margin: 5px;
+      padding: 8px 16px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .search-container input {
+      padding: 8px;
+      width: 250px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Navbar -->
+  <header>
+    <nav>
+      <ul style="display: flex; list-style: none; justify-content: space-around; background: #333; padding: 10px; color: white;">
+        <li><a href="index.html" style="color: white;">Home</a></li>
+        <li><a href="products.html" style="color: white;">Products</a></li>
+        <li><a href="cart.html" style="color: white;">Cart (<span id="cartCount">0</span>)</a></li>
+        <li><a href="checkout.html" style="color: white;">Checkout</a></li>
+        <li id="loginLink"><a href="login.html" style="color: white;">Login</a></li>
+        <li id="userGreeting"></li>
+        <li><button id="logoutBtn" onclick="logoutUser()" style="display: none;">Logout</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ✅ Filter & Search -->
+  <div class="filter-container">
+    <button onclick="filterProducts('All')">All</button>
+    <button onclick="filterProducts('Birthday')">Birthday</button>
+    <button onclick="filterProducts('Wedding')">Wedding</button>
+    <button onclick="filterProducts('Anniversary')">Anniversary</button>
+    <button onclick="filterProducts('Valentine')">Valentine</button>
+  </div>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search for gifts...">
+  </div>
+
+  <!-- ✅ Product Cards -->
+  <div class="product-container" id="productList">
+    <div class="product" data-category="Birthday">
+      <img src="images/birthday_gift.jpg" alt="Birthday Mug">
+      <h4>Birthday Mug</h4>
+      <p>₹299</p>
+      <button onclick="addToCart(1, 'Birthday Mug', 299)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="Wedding">
+      <img src="images/wedding_gift.jpg" alt="Wedding Photo Frame">
+      <h4>Wedding Photo Frame</h4>
+      <p>₹499</p>
+      <button onclick="addToCart(2, 'Wedding Photo Frame', 499)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="Anniversary">
+      <img src="images/anniversary_gift.jpg" alt="Love Lamp">
+      <h4>Love Lamp</h4>
+      <p>₹699</p>
+      <button onclick="addToCart(3, 'Love Lamp', 699)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="Valentine">
+      <img src="images/valentine_gift.jpg" alt="Heart Box">
+      <h4>Valentine Heart Box</h4>
+      <p>₹399</p>
+      <button onclick="addToCart(4, 'Valentine Heart Box', 399)">Add to Cart</button>
+    </div>
+    <div class="product" data-category="Birthday">
+      <img src="images/teddy.jpg" alt="Teddy Bear">
+      <h4>Birthday Teddy</h4>
+      <p>₹599</p>
+      <button onclick="addToCart(5, 'Birthday Teddy', 599)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- ✅ Script -->
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function updateCartCount() {
+      document.getElementById('cartCount').textContent = cart.length;
+    }
+
+    function addToCart(id, name, price) {
+      cart.push({ id, name, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+      alert(`${name} added to cart!`);
+    }
+
+    function logoutUser() {
+      localStorage.removeItem('loggedInUser');
+      window.location.reload();
+    }
+
+    function showUserGreeting() {
+      const username = localStorage.getItem('loggedInUser');
+      const greeting = document.getElementById('userGreeting');
+      const logoutBtn = document.getElementById('logoutBtn');
+      const loginLink = document.getElementById('loginLink');
+
+      if (username) {
+        greeting.textContent = `Hi, ${username}`;
+        logoutBtn.style.display = 'inline';
+        loginLink.style.display = 'none';
+      }
+    }
+
+    function filterProducts(category) {
+      const products = document.querySelectorAll('.product');
+      products.forEach(product => {
+        const matches = category === 'All' || product.dataset.category === category;
+        product.style.display = matches ? 'block' : 'none';
+      });
+    }
+
+    function searchProducts() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const products = document.querySelectorAll('.product');
+      products.forEach(product => {
+        const title = product.querySelector('h4').textContent.toLowerCase();
+        product.style.display = title.includes(input) ? 'block' : 'none';
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartCount();
+      showUserGreeting();
+    });
+  </script>
+
+</body>
+</html>

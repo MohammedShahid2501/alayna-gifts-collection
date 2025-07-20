@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You - Alayana Gift Collection</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .thank-you {
+      text-align: center;
+      margin-top: 100px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .thank-you h1 {
+      font-size: 2.5rem;
+      color: #28a745;
+    }
+
+    .thank-you p {
+      font-size: 1.2rem;
+      margin-top: 20px;
+    }
+
+    .thank-you a {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .thank-you a:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="thank-you">
+    <h1>Thank You!</h1>
+    <p>Your order has been placed successfully.</p>
+    <a href="index.html">Return to Home</a>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alayana Gift Collection</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/script.js" defer></script>
+</head>
+
+<body>
+  <!-- ✅ Paste this navbar block right here at the top of <body> -->
+  <header>
+    <nav style="display: flex; justify-content: space-between; align-items: center; background-color: #f1f1f1; padding: 10px 20px;">
+      <h2><a href="index.html" style="text-decoration: none; color: black;">Alayana Gift Collection</a></h2>
+      <div style="display: flex; gap: 20px; align-items: center;">
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+        <span id="userGreeting"></span>
+        <button id="logoutBtn" style="display:none;" onclick="logoutUser()">Logout</button>
+        <a id="loginLink" href="login.html">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 👇 Your page content goes here -->
+
+
+  <main>
+    <section class="hero">
+      <h2>Welcome to the Best Gift Store!</h2>
+      <p>Find gifts for every occasion.</p>
+    </section>
+
+    <section class="featured-products">
+      <h3>Featured Gifts</h3>
+      <div class="product-grid">
+        <div class="product">
+          <img src="images/gift1.jpg" alt="Gift 1">
+          <h4>Personalized Mug</h4>
+          <p>₹299</p>
+        </div>
+        <div class="product">
+          <img src="images/gift2.jpg" alt="Gift 2">
+          <h4>Photo Frame</h4>
+          <p>₹499</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Alayana Gift Collection</p>
+  </footer>
+</body>
+</html>
